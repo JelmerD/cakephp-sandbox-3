@@ -1,0 +1,3 @@
+[submodule "plugins/TableHelper"]
+	path = plugins/TableHelper
+	url = https://github.com/JelmerD/TableHelper.git

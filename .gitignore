@@ -12,7 +12,3 @@
 
 # ignore the migrations lock file
 schema-dump-default.lock
-
-# Plugin development
-/plugins/*
-!/plugins/empty
