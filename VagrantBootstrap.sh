@@ -81,6 +81,8 @@ if [ ! -f /usr/bin/php ]; then
     aptitude install -y php7.0 php7.0-mbstring php7.0-intl php7.0-mysql
     # these are not...
     aptitude install -y php7.0-cli php7.0-curl php7.0-pear php7.0-mcrypt php7.0-json libapache2-mod-php7.0 php7.0-xdebug php7.0-zip
+    # needed for phpunit
+    aptitude install -y php7.0-xml
 fi
 
 # COMPOSER
