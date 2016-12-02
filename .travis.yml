@@ -16,8 +16,8 @@ env:
 matrix:
   fast_finish: true
 
-  include:
-    - php: 7.0
+#  include:
+#    - php: 7.0
 #      env: PHPCS=1 DEFAULT=0
 
 before_script:
