@@ -4,6 +4,12 @@
   "homepage": "http://cakephp.org",
   "type": "project",
   "license": "MIT",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/cakephp/cakephp"
+    }
+  ],
   "require": {
     "php": ">=5.6",
     "cakephp/cakephp": "3.3.*",
@@ -12,6 +18,7 @@
     "cakephp/plugin-installer": "*"
   },
   "require-dev": {
+    "cakephp/cakephp": "dev-master as 3.3.10-dev",
     "psy/psysh": "@stable",
     "cakephp/debug_kit": "~3.2",
     "cakephp/bake": "~1.1",

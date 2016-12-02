@@ -13,6 +13,7 @@
  */
 namespace App\View;
 
+use Cake\Network\Exception\NotAcceptableException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\Network\Exception\SocketException;
 use Cake\View\View;
@@ -21,6 +22,8 @@ use Cake\View\View;
  * Application View
  *
  * Your application’s default view class
+ *
+ * @property \TableHelper\View\Helper\TableHelper $Table
  *
  * @link http://book.cakephp.org/3.0/en/views.html#the-app-view
  */
@@ -38,5 +41,6 @@ class AppView extends View
      */
     public function initialize()
     {
+        parent::initialize();
     }
 }

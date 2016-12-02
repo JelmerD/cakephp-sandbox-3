@@ -51,6 +51,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
 
+    $routes->connect('/table-helper', ['controller' => 'TableHelpers', 'action' => 'index']);
+    $routes->connect('/table-helper/:action/*', ['controller' => 'TableHelpers']);
+
     /**
      * Connect catchall routes for all controllers.
      *
