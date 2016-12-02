@@ -1,0 +1,18 @@
+# IDE specific
+.idea/*
+
+# Vagrant
+.vagrant/*
+
+# project specific
+/vendor/*
+/config/app.php
+/tmp/*
+/logs/*
+
+# ignore the migrations lock file
+schema-dump-default.lock
+
+# Plugin development
+/plugins/*
+!/plugins/empty
