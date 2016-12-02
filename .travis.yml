@@ -26,7 +26,7 @@ matrix:
 
 before_script:
   - composer self-update
-  - composer install --prefer-source --no-interaction
+  - composer install --no-interaction
 
   - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE test;'; fi"
 
@@ -35,7 +35,8 @@ before_script:
 
 script:
   - sh -c "if [ '$DEFAULT' = '1' ]; then phpunit; fi"
-  - sh -c "if [ '$PHPCS' = '1' ]; then vendor/bin/phpcs -p --extensions=php --standard=vendor/fig-r/psr2r-sniffer/PSR2R/ruleset.xml --ignore=vendor --ignore=config/Migrations -v . ; fi"
+  - sh -c "if [ '$PHPCS' = '1' ]; then vendor/bin/phpcs --config-set installed_paths vendor/cakephp/cakephp-codesniffer; fi"
+  - sh -c "if [ '$PHPCS' = '1' ]; then vendor/bin/phpcs -p --extensions=php --standard=CakePHP --ignore=vendor --ignore=config/Migrations -v . ; fi"
 
 notifications:
   email: false
