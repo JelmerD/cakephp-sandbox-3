@@ -21,7 +21,7 @@ matrix:
 #      env: PHPCS=1 DEFAULT=0
 
 before_script:
-  - composer install --no-interaction
+  - composer install --prefer-dist --no-interaction
 
   - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE test;'; fi"
 
