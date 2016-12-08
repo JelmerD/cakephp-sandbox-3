@@ -15,7 +15,8 @@
     "cakephp/cakephp": "3.3.*",
     "mobiledetect/mobiledetectlib": "2.*",
     "cakephp/migrations": "~1.0",
-    "cakephp/plugin-installer": "*"
+    "cakephp/plugin-installer": "*",
+    "jelmerd/table-helper": "3.*"
   },
   "require-dev": {
     "cakephp/cakephp": "dev-master as 3.3.10-dev",
@@ -24,8 +25,7 @@
     "cakephp/bake": "~1.1",
     "phpunit/phpunit": "^5.7",
     "cakephp/cakephp-codesniffer": "^2.2",
-    "twbs/bootstrap": "~4.0"
-
+    "twbs/bootstrap": "4.0.0-alpha5"
   },
   "suggest": {
     "markstory/asset_compress": "An asset compression plugin which provides file concatenation and a flexible filter system for preprocessing and minification."
