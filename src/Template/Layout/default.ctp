@@ -1,57 +1,73 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         0.10.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @var $this App\View\AppView
  */
-
-$cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
-<!DOCTYPE html>
+<?= $this->Html->docType() ?>
 <html>
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?php
+    echo $this->Html->tag('title', sprintf('Sandbox: %s', $this->fetch('title')));
+
+    echo $this->Html->meta('icon');
+
+    echo $this->Html->css('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css', [
+        'integrity' => '',
+        'crossorigin' => ''
+    ]);
+    echo $this->Html->css('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css');
+    echo $this->Html->css('style');
+
+    echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js');
+    echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', [
+        'integrity' => 'sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7',
+        'crossorigin' => 'anonymous'
+    ]);
+    echo $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js', [
+        'integrity' => 'sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8',
+        'crossorigin' => 'anonymous'
+    ]);
+    echo $this->Html->script('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js', [
+        'integrity' => 'sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK',
+        'crossorigin' => 'anonymous'
+    ]);
+    ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-<nav class="top-bar expanded" data-topbar role="navigation">
-    <ul class="title-area large-3 medium-4 columns">
-        <li class="name">
-            <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+<nav class="navbar navbar-dark bg-inverse navbar-fixed-top navbar-full">
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <?= $this->Html->link('Home', '/', ['class' => 'nav-link']); ?>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://sandbox.jelmerdroge.nl" id="navbarDropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Plugins
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <?= $this->Html->link('JelmerD/TableHelper', ['controller' => 'Plugins', 'action' => 'tableHelper'], ['class' => 'dropdown-item']) ?>
+                <?= $this->Html->link('JelmerD/LogWatcher', ['controller' => 'Plugins', 'action' => 'logWatcher'], ['class' => 'dropdown-item']) ?>
+            </div>
         </li>
     </ul>
-    <div class="top-bar-section">
-        <ul class="right">
-            <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-            <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
-        </ul>
-    </div>
 </nav>
-<?= $this->Flash->render() ?>
-<div class="container clearfix">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <?= $this->Html->tag('h1', $this->fetch('title')) ?>
+        </div>
+    </div>
+    <?= $this->Flash->render() ?>
     <?= $this->fetch('content') ?>
 </div>
-<footer>
-</footer>
 </body>
 </html>

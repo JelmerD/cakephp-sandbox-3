@@ -42,5 +42,10 @@ class AppView extends View
     public function initialize()
     {
         parent::initialize();
+        $this->loadHelper('TableHelper.Table', [
+            'partOptions' => [
+                'table' => ['class' => 'table table-bordered']
+            ]
+        ]);
     }
 }

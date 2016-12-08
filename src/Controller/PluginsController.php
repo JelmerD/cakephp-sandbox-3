@@ -1,16 +1,25 @@
 <?php
 namespace App\Controller;
 
-class TableHelpersController extends AppController
+class PluginsController extends AppController
 {
     public function initialize()
     {
         parent::initialize();
-        $this->viewBuilder()->helpers(['TableHelper.Table']);
     }
 
     public function index()
     {
-        # I.L.B.
+
+    }
+
+    public function tableHelper()
+    {
+
+    }
+
+    public function logWatcher()
+    {
+
     }
 }
