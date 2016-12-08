@@ -219,6 +219,10 @@ Type::build('datetime')
  * Debug Kit should not be installed on a production system
  */
 if (Configure::read('debug')) {
-    Plugin::load('DebugKit', ['bootstrap' => true]);
+    try {
+        Plugin::load('DebugKit', ['bootstrap' => true]);
+    } catch (Exception $e) {
+        debug($e->getMessage());
+    }
 }
 Plugin::load('TableHelper', ['autoload' => true]);
