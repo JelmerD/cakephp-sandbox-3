@@ -9,3 +9,7 @@ div.space {
 div.demo-sample {
     margin-bottom: 2rem;
 }
+
+input.slider-wide {
+    width: 100%;
+}

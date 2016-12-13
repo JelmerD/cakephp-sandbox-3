@@ -47,14 +47,24 @@
             <?= $this->Html->link('Home', '/', ['class' => 'nav-link']); ?>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://sandbox.jelmerdroge.nl" id="navbarDropdownMenuLink"
+            <a class="nav-link dropdown-toggle" href="/plugins" id="navbarDropdownMenuPlugins"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Plugins
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuPlugins">
                 <?= $this->Html->link('JelmerD/TableHelper', ['controller' => 'Plugins', 'action' => 'tableHelper'], ['class' => 'dropdown-item']) ?>
                 <?= $this->Html->link('JelmerD/LogWatcher', ['controller' => 'Plugins', 'action' => 'logWatcher'], ['class' => 'dropdown-item']) ?>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/three" id="navbarDropdownMenuThree"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Three.js
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuThree">
+                <?= $this->Html->link('Lorenz Attractor', ['controller' => 'Three', 'action' => 'lorenzAttractor'], ['class' => 'dropdown-item']) ?>
             </div>
         </li>
     </ul>

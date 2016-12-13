@@ -220,7 +220,7 @@ Type::build('datetime')
  */
 if (Configure::read('debug')) {
     try {
-        Plugin::load('DebugKit', ['bootstrap' => true]);
+//        Plugin::load('DebugKit', ['bootstrap' => true, 'routes' => true]);
     } catch (Exception $e) {
         debug($e->getMessage());
     }
