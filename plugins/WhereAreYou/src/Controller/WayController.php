@@ -21,9 +21,12 @@ class WayController extends AppController
         $this->loadModel('WhereAreYou.Groups');
     }
 
+    /**
+     * @return \Cake\Network\Response|null
+     */
     public function index()
     {
-        $this->viewBuilder()->layout('fullscreen');
+        $this->viewBuilder()->setLayout('fullscreen');
         if ($hash = $this->request->getParam('hash')) {
             $exists = $this->Groups->exists([
                 'hash' => $hash
@@ -41,6 +44,11 @@ class WayController extends AppController
         }
     }
 
+    /**
+     * Get the data via AJAX
+     *
+     * @throws NotFoundException
+     */
     public function data()
     {
         $this->set('_serialize', true);
@@ -50,6 +58,7 @@ class WayController extends AppController
             throw new NotFoundException();
         }
 
+        # if it is a post request, add a new user/location
         if ($this->request->is('post')) {
             $userHash = $this->request->getData('user');
             if (!$userHash) {
@@ -65,7 +74,7 @@ class WayController extends AppController
             ])
             ->toArray();
 
-        // for some weird reason limit()
+        // for some weird reason limit() isn't working on contain, this is a quick and dirty fix
         foreach ($users as &$u) {
             $u['locations'] = $this->Groups->Users->Locations->find()
                 ->where(['user_id' => $u->id])

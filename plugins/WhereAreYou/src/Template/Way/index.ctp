@@ -5,7 +5,8 @@
 ?>
 <div id="map"></div>
 <div id="debug">
-    <div class="users">Users: <span>0</span></div>
+    <div class="usersinfo"></div>
+    <div class="updated">Updated: <span>-</span></div>
 </div>
 <?php
 echo $this->Html->css('WhereAreYou.style.css');

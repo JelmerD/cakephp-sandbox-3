@@ -2,10 +2,13 @@ var geoLocation, timer, isReady = true, user = null, map, markers = [];
 
 $(document).ready(function () {
     global = $.parseJSON(global);
-    console.log(global);
-    initMap();
-    tick();
-    timer = setInterval(tick, 1000);
+    if (navigator.geolocation) {
+        initMap();
+        tick();
+        timer = setInterval(tick, 5000);
+    } else {
+        $('body').html('Geolocation is not supported by this browser')
+    }
 });
 
 function initMap() {
@@ -33,11 +36,7 @@ function usr(userHash) {
 }
 
 function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(updateLocation);
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
+    navigator.geolocation.getCurrentPosition(updateLocation);
 }
 
 function updateLocation(loc) {
@@ -46,8 +45,8 @@ function updateLocation(loc) {
 
 function updateMap(users) {
     while(markers.length) {markers.pop().setMap(null);}
+    $('#debug .usersinfo').html('Users (' + users.length + '):');
     for(var i = 0; i < users.length; i++) {
-        console.log(users[i]);
         markers.push(new google.maps.Marker({
             position: {
                 lat: users[i].locations[0].lat,
@@ -56,11 +55,8 @@ function updateMap(users) {
             label: String(users[i].id),
             map: map
         }));
+        $('#debug .usersinfo').append($('<div></div>').html(users[i].id + ' : ' + users[i].locations[0].created));
     }
-}
-
-function addMarker() {
-
 }
 
 function updateData() {
@@ -80,11 +76,11 @@ function updateData() {
             'accuracy': geoLocation.coords.accuracy
         },
         success: function (data) {
-            console.log(data);
             usr(data.user);
-            debug('users', data.users.length);
+            var d = new Date();
+            debug('updated', d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds());
             updateMap(data.users);
-            //isReady = true;
+            isReady = true;
         },
         dataType: 'json'
     });
