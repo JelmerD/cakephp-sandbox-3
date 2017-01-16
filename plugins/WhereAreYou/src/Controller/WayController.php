@@ -46,9 +46,9 @@ class WayController extends AppController
         $this->set('_serialize', true);
         $this->viewBuilder()->setClassName('Json');
         $group = $this->Groups->findByHash($this->request->getParam('hash'))->first();
-//        if (!$this->request->is('ajax') || !$group) {
-//            throw new NotFoundException();
-//        }
+        if (!$group) {
+            throw new NotFoundException();
+        }
 
         if ($this->request->is('post')) {
             $userHash = $this->request->getData('user');
@@ -64,6 +64,8 @@ class WayController extends AppController
                 'group_id' => $group->id
             ])
             ->toArray();
+
+        // for some weird reason limit()
         foreach ($users as &$u) {
             $u['locations'] = $this->Groups->Users->Locations->find()
                 ->where(['user_id' => $u->id])
@@ -73,7 +75,6 @@ class WayController extends AppController
                 ->limit(1)
                 ->toArray();
         }
-        $this->log($users, LOG_DEBUG);
 
         $this->set([
             'group' => $group->hash,
