@@ -226,3 +226,4 @@ if (Configure::read('debug')) {
     }
 }
 Plugin::load('TableHelper', ['autoload' => true]);
+Plugin::load('WhereAreYou', ['autoload' => true, 'routes' => true]);
