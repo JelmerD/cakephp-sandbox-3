@@ -1,0 +1,12 @@
+#map {
+    height: 100%;
+}
+#debug {
+    width: 300px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0,0.2);
+    color: #fff;
+    font-family: Courier, monospace, sans-serif;
+}
